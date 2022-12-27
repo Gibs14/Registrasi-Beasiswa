@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1671891590 source:c:\users\fakhr\onedrive\dokumen\kuliah\semester 3\sdt\tubes\tubes-std_registrasi\regis.cpp
+
+1672123160 source:c:\users\fakhr\onedrive\dokumen\kuliah\semester 3\sdt\tubes\tubes-std_registrasi\main.cpp
+	"regis.h"
+
+1672123908 c:\users\fakhr\onedrive\dokumen\kuliah\semester 3\sdt\tubes\tubes-std_registrasi\regis.h
+	<iostream>
+
