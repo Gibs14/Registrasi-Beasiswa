@@ -44,7 +44,7 @@ typedef syaratBeasiswa infoSyarat;
 
 struct univ {
     string nama;
-    bool statusNegeri;
+    bool statusNegeri; //Yakin bool aja? Gamau string gtu? Jd nnti ditulis "Negeri" OR "Swasta" (?) - Gibran
     char akreditasi;
 };
 
