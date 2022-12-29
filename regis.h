@@ -3,6 +3,7 @@
 
 #include <iostream>
 
+#define first(L) ((L).first)
 #define info(P) (P)->info
 
 #define nextUniv(P) (P)->nextUniv
@@ -12,6 +13,7 @@
 
 #define terdaftarBeasiswa(P) (P)->terdaftarBeasiswa
 #define nextDaftar(P) (P)->nextDaftar
+#define nil NULL
 
 using namespace std;
 
@@ -21,10 +23,13 @@ struct mhs {
     int semester;
 };
 
+typedef mhs infoMhs;
+
 struct beasiswa {
     string nama, instansi, benefit;
     //benefit isinya mau apa aja? atau mau dipersimpel jadi besaran uang aja?
-    syaratBeasiswa syarat; //string ati mau di how-in?
+    infoSyarat syarat; //string ati mau di how-in?
+                        //Maksudnya string ati apa ya? -Gibran
 };
 
 struct syaratBeasiswa{
@@ -35,10 +40,12 @@ struct syaratBeasiswa{
     char akreditasi;
 }
 
+typedef syaratBeasiswa infoSyarat;
+
 struct univ {
-  string nama;
-  bool statusNegeri;
-  char akreditasi;
+    string nama;
+    bool statusNegeri;
+    char akreditasi;
 };
 
 typedef struct elmMhs *adrMhs;
@@ -48,7 +55,7 @@ typedef struct elmBeasiswa *adrBeasiswa;
 typedef struct childBeasiswa *adrChildBeasiswa;
 
 struct elmMhs {
-    mhs info;
+    infoMhs info;
     adrUniv asalUniv;
     adrChildBeasiswa terdaftarBeasiswa;
     adrMhs nextMhs;
@@ -68,21 +75,37 @@ struct childBeasiswa{
     //diperlukan supaya mahasiswa bisa daftar lebih dari 1 beasiswa
     adrBeasiswa connectBeasiswa; //rename jika ada yg lebih clear
     adrChildBeasiswa nextDaftar;
-}
+} //Gw msh bingung disini (bingung buat function/prosedurnya) biar lbh jelasnya sok lihat bagian bwh, mhn bantuannya -Gibran
 
 struct listMhs {
     adrMhs first;
-    //adrMhs last; ::Mau Pake Last?::
 };
 
 struct listUniv {
     adrUniv first;
-    //adrMhs last; ::Mau Pake Last?::
 };
 
 struct listBeasiswa {
     adrBeasiswa first;
-    //adrMhs last; ::Mau Pake Last?::
 };
+
+void createListMhs(listMhs &M);
+void createListUniv(listUniv &U);
+void createListBeasiswa(listBeasiswa &B);
+
+adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi);
+
+infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, char akreditasi);
+adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, infoSyarat syarat);
+
+infoMhs inputDataMhs(string nama, string nim, float ipk, int semester);
+//DIsini kudunya ada func/proc buat si adrChildBeasiswa, atau kalo ada cara lbh better sok aja (janlup jelasin wkwk)
+//adrUniv gaperlu lg soalnya udh di atas, jd sisa yg kata adrChildBeasiswa aj yg w bingung (yg udh w mention di atas jg)
+adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv, adrChildBeasiswa inBeasiswa);
+
+void addUniv(listUniv &U, adrUniv p);
+void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
+void addMhs(listMhs &M, adrMhs p);
+
 
 #endif // REGIS_H_INCLUDED
