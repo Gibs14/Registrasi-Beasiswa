@@ -13,7 +13,13 @@ void createListBeasiswa(listBeasiswa &B) {
 }
 
 adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi) {
-
+    adrUniv p;
+    p = new elmUniv;
+    info(p).nama = nama;
+    info(p).statusNegeri = statusNegri;
+    info(p).akreditasi = Akreditasi;
+    next(p) = nil;
+    return p;
 }
 
 
