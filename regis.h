@@ -5,10 +5,9 @@
 
 #define first(L) ((L).first)
 #define info(P) (P)->info
-
 #define next(P) (P)->next
-#define asalUniv(P) (P)->asalUniv
 
+#define asalUniv(P) (P)->asalUniv
 #define terdaftarBeasiswa(P) (P)->terdaftarBeasiswa
 #define nil NULL
 
@@ -97,11 +96,26 @@ adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, info
 infoMhs inputDataMhs(string nama, string nim, float ipk, int semester);
 adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv);
 
-void daftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa);
+//prosedur untuk child dari elmMahasiswa
+void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //inserlastChildBeasiwa
+void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //deleteChildBeasiwa
+void terimaBeasiswa(adrMhs pendaftar); //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
+
+void pindahUniv(adrMhs pendaftar, adrUniv asalUniv); //kalau kira2 tidak diperlukan remove aja
+void masukUniv(adrMhs pendaftar, adrUniv asalUniv); //
+void keluarUniv(adrMhs pendaftar);
+
+void removeNullUniv(adrMhs pendaftar); //remove beasiswa atau univ yg null setelah delete
+void removeNullBeasiswa(adrMhs pendaftar);
+//end
+
 
 void addUniv(listUniv &U, adrUniv p);
 void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
 void addMhs(listMhs &M, adrMhs p);
 
+void deleteUniv(listUniv &U, adrUniv p);
+void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p);
+void deleteMhs(listMhs &M, adrMhs p);
 
 #endif // REGIS_H_INCLUDED
