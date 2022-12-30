@@ -55,11 +55,36 @@ infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
 
 //prosedur untuk child dari elmMahasiswa
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
-
+    adrChildBeasiswa p = terdaftarBeasiswa(pendaftar), temp = new childBeasiswa;
+    
+    connect(temp) = inBeasiswa
+    next(temp) = nil;
+    
+    if(terdaftarBeasiswa(pendaftar) == nil){
+        terdaftarBeasiswa(pendaftar) = temp;
+    } else {
+        while(next(p) != nil){
+            p = next(p)
+        }
+        
+        next(p) = temp;
+    }
 } //insertlastChildBeasiwa
 
 void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
-
+    adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
+    if (p == nil){
+    } else if (next(p) == nil){
+        
+    } else {
+        while(next(p) != nil){
+            if(next(p) == inBeasiswa){
+                next(p) = next(next(p);
+                break;
+            }
+            p = next(p);
+        }
+    }
 } //deleteChildBeasiwa
 
 void terimaBeasiswa(adrMhs pendaftar) {
@@ -67,14 +92,20 @@ void terimaBeasiswa(adrMhs pendaftar) {
 } //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
 
 void pindahUniv(adrMhs pendaftar, adrUniv asalUniv) {
-
+    keluarUniv(pendaftar);
+    masukUniv(pendaftar, asalUniv);
 } //kalau kira2 tidak diperlukan remove aja
 
 void masukUniv(adrMhs pendaftar, adrUniv asalUniv) {
-
+    if (asalUniv(pendaftar) == nil){
+        asalUniv(pendaftar) = asalUniv;
+    }
 } //
+                               
 void keluarUniv(adrMhs pendaftar) {
-
+    if (asalUniv(pendaftar) != nil){
+        asalUniv(pendaftar) = nil;
+    }
 }
 
 void removeNullUniv(adrMhs pendaftar) {
