@@ -54,7 +54,8 @@ infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
 }
 
 //prosedur untuk child dari elmMahasiswa
-void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
+void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) { 
+    //insertlastChildBeasiwa
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar), temp = new childBeasiswa;
     
     connect(temp) = inBeasiswa
@@ -64,21 +65,22 @@ void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
         terdaftarBeasiswa(pendaftar) = temp;
     } else {
         while(next(p) != nil){
-            p = next(p)
+            p = next(p);
         }
         
         next(p) = temp;
     }
-} //insertlastChildBeasiwa
+} 
 
-void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
+void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {//unfinished
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
     if (p == nil){
+        cout << "Tidak ada beasiswa yang terdaftar" << endl;
     } else if (next(p) == nil){
-        
+        terdaftarBeasiswa(pendaftar) = nil;
     } else {
         while(next(p) != nil){
-            if(next(p) == inBeasiswa){
+            if(connect(next(p)) == inBeasiswa){
                 next(p) = next(next(p);
                 break;
             }
@@ -88,13 +90,25 @@ void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
 } //deleteChildBeasiwa
 
 void terimaBeasiswa(adrMhs pendaftar) {
-
-} //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
+//cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
+    adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
+    
+    while(p != nil){
+        if(connect(p) == nil){
+            p = next(p)
+            keluarBeasiswa(pendaftar, nil);
+        } else {
+            //if(
+            p = next(p);
+        }
+        
+    }
+} 
 
 void pindahUniv(adrMhs pendaftar, adrUniv asalUniv) {
     keluarUniv(pendaftar);
     masukUniv(pendaftar, asalUniv);
-} //kalau kira2 tidak diperlukan remove aja
+}
 
 void masukUniv(adrMhs pendaftar, adrUniv asalUniv) {
     if (asalUniv(pendaftar) == nil){
@@ -107,21 +121,29 @@ void keluarUniv(adrMhs pendaftar) {
         asalUniv(pendaftar) = nil;
     }
 }
+                               
+//remove di header: void removeNullUniv(adrMhs pendaftar) {
 
-void removeNullUniv(adrMhs pendaftar) {
-
-} //remove beasiswa atau univ yg null setelah delete
 
 void removeNullBeasiswa(adrMhs pendaftar) {
-
+    adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
+    
+    while(p != nil){
+        if(connect(p) == nil){
+            p = next(p)
+            keluarBeasiswa(pendaftar, nil);
+        } else {
+            p = next(p);
+        } 
+    }
 }
 //end
 
-adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv, adrChildBeasiswa inBeasiswa) {
+adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv) {
     adrMhs p;
     info(p) = infoM;
     asalUniv(p) = asalUniv;
-    terdaftarBeasiswa(p) = inBeasiswa;
+    terdaftarBeasiswa(p) = nil;
     next(p) = nil;
     return p;
 }
