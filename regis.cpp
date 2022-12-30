@@ -77,7 +77,7 @@ void addBeasiswa(listBeasiswa &B, adrBeasiswa p) {
     if (first(B) == nil) {
         first(B) = p;   
     } else {
-        adrUniv b = first(B);   
+        adrBeasiswa b = first(B);   
         while (next(b) != nil) {
             b = next(b);   
         }
@@ -89,7 +89,7 @@ void addMhs(listMhs &M, adrMhs p) {
     if (first(M) == nil) {
         first(M) = p;   
     } else {
-        adrUniv m = first(M);   
+        adrMhs m = first(M);   
         while (next(m) != nil) {
             m = next(m);   
         }
