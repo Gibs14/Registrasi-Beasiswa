@@ -87,7 +87,12 @@ void removeNullBeasiswa(adrMhs pendaftar) {
 //end
 
 adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv, adrChildBeasiswa inBeasiswa) {
-
+    adrMhs p;
+    info(p) = infoM;
+    asalUniv(p) = asalUniv;
+    terdaftarBeasiswa(p) = inBeasiswa;
+    next(p) = nil;
+    return p;
 }
 
 
