@@ -27,8 +27,8 @@ infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, ch
     infoSyarat p;
     p.ipkMin = ipkMin;
     p.semester = semester;
-    p.statusNeger = statusNegeri;
-    p.akreditas = akreditasi;
+    p.statusNegeri = statusNegeri;
+    p.akreditasi = akreditasi;
     return p;
 }
 
@@ -38,7 +38,7 @@ adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, info
     info(p).nama = nama;
     info(p).instansi = instansi;
     info(p).benefit = benefit;
-    info(p).infoSyarat = infoSyarat;
+    info(p).syarat = syarat;
     next(p) = nil;
     return p;
 }
@@ -47,7 +47,7 @@ adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, info
 infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
     infoMhs p;
     p.nama = nama;
-    p.nim = niml
+    p.nim = nim;
     p.ipk = ipk;
     p.semester = semester;
     return p;
@@ -55,34 +55,34 @@ infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
 
 //prosedur untuk child dari elmMahasiswa
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
-    
+
 } //insertlastChildBeasiwa
 
 void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
-    
+
 } //deleteChildBeasiwa
 
 void terimaBeasiswa(adrMhs pendaftar) {
-    
+
 } //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
 
 void pindahUniv(adrMhs pendaftar, adrUniv asalUniv) {
-    
+
 } //kalau kira2 tidak diperlukan remove aja
 
 void masukUniv(adrMhs pendaftar, adrUniv asalUniv) {
-    
+
 } //
 void keluarUniv(adrMhs pendaftar) {
-    
+
 }
 
 void removeNullUniv(adrMhs pendaftar) {
-    
+
 } //remove beasiswa atau univ yg null setelah delete
 
 void removeNullBeasiswa(adrMhs pendaftar) {
-    
+
 }
 //end
 
@@ -93,11 +93,11 @@ adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv, adrChildBeasiswa inBeasiswa
 
 void addUniv(listUniv &U, adrUniv p) {
     if (first(U) == nil) {
-        first(U) = p;   
+        first(U) = p;
     } else {
-        adrUniv u = first(U);   
+        adrUniv u = first(U);
         while (next(u) != nil) {
-            u = next(u);   
+            u = next(u);
         }
         next(u) = p;
     }
@@ -105,11 +105,11 @@ void addUniv(listUniv &U, adrUniv p) {
 
 void addBeasiswa(listBeasiswa &B, adrBeasiswa p) {
     if (first(B) == nil) {
-        first(B) = p;   
+        first(B) = p;
     } else {
-        adrBeasiswa b = first(B);   
+        adrBeasiswa b = first(B);
         while (next(b) != nil) {
-            b = next(b);   
+            b = next(b);
         }
         next(b) = p;
     }
@@ -117,24 +117,24 @@ void addBeasiswa(listBeasiswa &B, adrBeasiswa p) {
 
 void addMhs(listMhs &M, adrMhs p) {
     if (first(M) == nil) {
-        first(M) = p;   
+        first(M) = p;
     } else {
-        adrMhs m = first(M);   
+        adrMhs m = first(M);
         while (next(m) != nil) {
-            m = next(m);   
+            m = next(m);
         }
         next(m) = p;
     }
 }
 
 void deleteUniv(listUniv &U, adrUniv p) {
-    
+
 }
 
 void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) {
-    
+
 }
 
 void deleteMhs(listMhs &M, adrMhs p) {
-    
+
 }
