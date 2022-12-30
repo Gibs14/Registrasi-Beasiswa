@@ -53,8 +53,38 @@ infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
     return p;
 }
 
-//DIsini kudunya ada func/proc buat si adrChildBeasiswa, atau kalo ada cara lbh better sok aja (janlup jelasin wkwk)
-//adrUniv gaperlu lg soalnya udh di atas, jd sisa yg kata adrChildBeasiswa aj yg w bingung (yg udh w mention di atas jg)
+//prosedur untuk child dari elmMahasiswa
+void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
+    
+} //insertlastChildBeasiwa
+
+void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
+    
+} //deleteChildBeasiwa
+
+void terimaBeasiswa(adrMhs pendaftar) {
+    
+} //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
+
+void pindahUniv(adrMhs pendaftar, adrUniv asalUniv) {
+    
+} //kalau kira2 tidak diperlukan remove aja
+
+void masukUniv(adrMhs pendaftar, adrUniv asalUniv) {
+    
+} //
+void keluarUniv(adrMhs pendaftar) {
+    
+}
+
+void removeNullUniv(adrMhs pendaftar) {
+    
+} //remove beasiswa atau univ yg null setelah delete
+
+void removeNullBeasiswa(adrMhs pendaftar) {
+    
+}
+//end
 
 adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv, adrChildBeasiswa inBeasiswa) {
 
@@ -95,4 +125,16 @@ void addMhs(listMhs &M, adrMhs p) {
         }
         next(m) = p;
     }
+}
+
+void deleteUniv(listUniv &U, adrUniv p) {
+    
+}
+
+void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) {
+    
+}
+
+void deleteMhs(listMhs &M, adrMhs p) {
+    
 }
