@@ -19,7 +19,16 @@ struct mhs {
     int semester;
 };
 
+struct syaratBeasiswa{
+    float ipkMin;
+    int semester;
+
+    bool statusNegeri;
+    char akreditasi;
+};
+
 typedef mhs infoMhs;
+typedef syaratBeasiswa infoSyarat;
 
 struct beasiswa {
     string nama, instansi, benefit;
@@ -27,15 +36,9 @@ struct beasiswa {
     infoSyarat syarat;
 };
 
-struct syaratBeasiswa{
-    float ipkMin;
-    int semester;
-  
-    bool statusNegeri;
-    char akreditasi;
-}
 
-typedef syaratBeasiswa infoSyarat;
+
+
 
 struct univ {
     string nama;
@@ -70,7 +73,7 @@ struct childBeasiswa{
     //diperlukan supaya mahasiswa bisa daftar lebih dari 1 beasiswa
     adrBeasiswa connectBeasiswa; //rename jika ada yg lebih clear
     adrChildBeasiswa next;
-} //Gw msh bingung disini (bingung buat function/prosedurnya) biar lbh jelasnya sok lihat bagian bwh, mhn bantuannya -Gibran
+}; //Gw msh bingung disini (bingung buat function/prosedurnya) biar lbh jelasnya sok lihat bagian bwh, mhn bantuannya -Gibran
 
 struct listMhs {
     adrMhs first;
