@@ -9,6 +9,9 @@
 
 #define asalUniv(P) (P)->asalUniv
 #define terdaftarBeasiswa(P) (P)->terdaftarBeasiswa
+
+#define connect(P) (P)->connectBeasiswa
+
 #define nil NULL
 
 using namespace std;
@@ -35,9 +38,6 @@ struct beasiswa {
     //benefit isinya mau apa aja? atau mau dipersimpel jadi besaran uang aja?
     infoSyarat syarat;
 };
-
-
-
 
 
 struct univ {
@@ -73,7 +73,7 @@ struct childBeasiswa{
     //diperlukan supaya mahasiswa bisa daftar lebih dari 1 beasiswa
     adrBeasiswa connectBeasiswa; //rename jika ada yg lebih clear
     adrChildBeasiswa next;
-}; //Gw msh bingung disini (bingung buat function/prosedurnya) biar lbh jelasnya sok lihat bagian bwh, mhn bantuannya -Gibran
+};
 
 struct listMhs {
     adrMhs first;
@@ -87,38 +87,38 @@ struct listBeasiswa {
     adrBeasiswa first;
 };
 
+
+//mhs
 void createListMhs(listMhs &M);
-void createListUniv(listUniv &U);
-void createListBeasiswa(listBeasiswa &B);
-
-adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi);
-
-infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, char akreditasi);
-adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, infoSyarat syarat);
-
 infoMhs inputDataMhs(string nama, string nim, float ipk, int semester);
 adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv);
+void addMhs(listMhs &M, adrMhs p);
+void deleteMhs(listMhs &M, adrMhs p);
 
-//prosedur untuk child dari elmMahasiswa
+//child dari mhs
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //inserlastChildBeasiwa
 void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //deleteChildBeasiwa
 void terimaBeasiswa(adrMhs pendaftar); //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
 
-void pindahUniv(adrMhs pendaftar, adrUniv asalUniv); //kalau kira2 tidak diperlukan remove aja
-void masukUniv(adrMhs pendaftar, adrUniv asalUniv); //
+void pindahUniv(adrMhs pendaftar, adrUniv asalUniv);
+void masukUniv(adrMhs pendaftar, adrUniv asalUniv);
 void keluarUniv(adrMhs pendaftar);
 
 void removeNullUniv(adrMhs pendaftar); //remove beasiswa atau univ yg null setelah delete
 void removeNullBeasiswa(adrMhs pendaftar);
-//end
 
 
+//univ
+void createListUniv(listUniv &U);
+adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi);
 void addUniv(listUniv &U, adrUniv p);
-void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
-void addMhs(listMhs &M, adrMhs p);
-
 void deleteUniv(listUniv &U, adrUniv p);
+
+//beasiswa
+void createListBeasiswa(listBeasiswa &B);
+adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, infoSyarat syarat);
+infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, char akreditasi);
+void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
 void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p);
-void deleteMhs(listMhs &M, adrMhs p);
 
 #endif // REGIS_H_INCLUDED
