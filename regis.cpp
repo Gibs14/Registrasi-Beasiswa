@@ -190,9 +190,9 @@ void deleteUniv(listUniv &U, adrUniv p) {
 }
 
 void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) {
-
+    
 }
 
 void deleteMhs(listMhs &M, adrMhs p) {
-
+    
 }
