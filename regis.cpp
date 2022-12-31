@@ -204,3 +204,71 @@ void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) {
 void deleteMhs(listMhs &M, adrMhs p) {
     
 }
+
+           
+void showMahasiswa(listMhs M) {
+    if (first(M) != nil) {
+        adrMhs p = first(M);
+        while (p != nil) {
+            adrBeasiswa x = connect(terdaftarBeasiswa(p));
+            cout << "Nama mahasiswa : " << info(p).nama << endl;
+            cout << "NIM " << info(p).nama << " : " << info(p).nim << endl;
+            cout << "IPK " << info(p).nama << " : " << info(p).ipk << endl;
+            cout << "Semester " << info(p).nama << " : " << info(p).semester << endl;
+            cout << "Nama universitas yang diikuti oleh " << info(p).nama << " : " << info(p).asalUniv.nama << endl;
+            
+            if (x == nil) {
+                cout << info(p).nama << " Tidak terdaftar di beasiswa apapun" << endl;   
+            } else {
+                while (x != nil) {
+                    cout << "Nama beasiswa yang diambil oleb " << info(p).nama << " : " << x.nama << endl;
+                    x = next(x);
+                }
+            }
+            
+            p = next(p);
+        }
+    } else {
+        cout << "List mahasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;   
+    }
+}
+           
+void showBeasiswa(listBeasiswa B) {
+    if (first(B) != nil) {
+        adrBeasiswa p = first(B);
+        while (p != nil) {
+            cout << "Berikut nama beasiswanya : " << info(p).nama << endl;
+            cout << "Berikut instansi pemberi beasiswanya : " << info(p).instansi << endl;
+            cout << "Berikut benefit penerima beasiswa : " << info(p).benefit << endl << endl;
+            cout << "Berikut syarat minimal IPK penerima beasiswa : " << info(p).syarat.ipkMin << endl;
+            cout << "Berikut syarat minimal semester penerima beasiswa : " << info(p).syarat.semester << endl;
+            if (info(p).syarat.statusNegeri == true) {
+                cout << "Syarat status universitas penerima beasiswa : Negeri" << endl;
+            } else {
+                cout << "Syarat status universitas penerima beasiswa : Swasta" << endl;   
+            }
+            cout << "Berikut syarat minimal akreditasi universitas penerima beasiswa : " << info(p).syarat.akreditasi << endl;
+            p = next(p);
+        }
+    } else {
+        cout << "List beasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;   
+    }
+}
+           
+void showUniversitas(listUniv U) {
+    if (first(U) != nil) {
+        adrUniv p = first(U);
+        while (p != nil) {
+            cout << "Nama Universitas : " << info(p).nama << endl;
+            cout << "Akreditasi Universitas : " << info(p).akreditasi << endl;
+            if (info(p).statusNegeri == true) {
+                cout << "Status universitas : Negeri" << endl;
+            } else {
+                cout << "Status universitas : Swasta" << endl;   
+            }
+            p = next(p);
+        }
+    } else {
+        cout << "List universitas masih kosong, silahkan isi terlebih dahulu!" << endl;   
+    }
+}
