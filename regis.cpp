@@ -132,8 +132,12 @@ void masukUniv(adrMhs pendaftar, adrUniv newUniv) {
 void keluarUniv(adrMhs pendaftar) {
     asalUniv(pendaftar) = nil;
 }
-                               
-void removeNullBeasiswa(adrMhs pendaftar) {
+ 
+void removeNullUniv(listMhs &M, adrUniv p){
+    
+}
+           
+void removeNullBeasiswa(listMhs &M, adrBeasiswa p){
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
     
     while(p != nil){
@@ -228,9 +232,11 @@ void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     } else {
         cout << "List Universitas sudah kosong!" << endl;
     }
+    
+    void removeNullUniv(&M, p);
 }
 
-void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) { // Dh ni logic gw buat deleteBeasiswa pli, sok bntu benerin - Gibran
+void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p) {
     if (first(B) != nil) {
         adrBeasiswa x = first(B);   
         while (next(x) != nil) {//x nnti akan = last(B)
@@ -258,6 +264,7 @@ void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) { // Dh ni logic gw buat del
     } else {
         cout << "List Beasiswa sudah kosong!" << endl;
     }
+    void removeNullBeasiswa(&M, p);
 }
 
 void deleteMhs(listMhs &M, adrMhs p) {
