@@ -91,7 +91,7 @@ struct listBeasiswa {
 //mhs
 void createListMhs(listMhs &M);
 infoMhs inputDataMhs(string nama, string nim, float ipk, int semester);
-adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv);
+adrMhs createAdrMhs(infoMhs infoM);
 void addMhs(listMhs &M, adrMhs p);
 void deleteMhs(listMhs &M, adrMhs p);
 
