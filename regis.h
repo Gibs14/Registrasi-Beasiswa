@@ -113,7 +113,7 @@ void removeNullBeasiswa(adrMhs pendaftar);
 void createListUniv(listUniv &U);
 adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi);
 void addUniv(listUniv &U, adrUniv p);
-void deleteUniv(listUniv &U, adrUniv p);
+void deleteUniv(listUniv &U, listMhs &M, adrUniv p); //gw tambahin list Mhs soalnya buat univ dihapus, mhs yg tersambung ke univ tsb kan kudu dihapus dl (diputus koneksinya) - Gibran
 
 //beasiswa
 void createListBeasiswa(listBeasiswa &B);
