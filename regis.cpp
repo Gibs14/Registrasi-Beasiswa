@@ -194,7 +194,12 @@ void addMhs(listMhs &M, adrMhs p) {
 }
 
 void deleteUniv(listUniv &U, adrUniv p) {
-
+    adrUniv x = first(U);
+    if (first(U) != nil) {
+        
+    } else {
+        cout << "List Universitas sudah kosong!" << endl;
+    }
 }
 
 void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) {
