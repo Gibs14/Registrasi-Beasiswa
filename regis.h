@@ -127,4 +127,8 @@ void showMahasiswa(listMhs M);
 void showBeasiswa(listBeasiswa B);
 void showUniversitas(listUniv U);
 
+adrMhs searchMahasiswa(listMhs M, string NIM);
+adrUniv searchUniversitas(listUniv U, string nama);
+adrBeasiswa searchBeasiswa(listBeasiswa B, string nama);
+
 #endif // REGIS_H_INCLUDED
