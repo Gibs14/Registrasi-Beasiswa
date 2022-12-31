@@ -11,6 +11,7 @@
 #define terdaftarBeasiswa(P) (P)->terdaftarBeasiswa
 
 #define connect(P) (P)->connectBeasiswa
+#define diterima(P) (P)->diterima
 
 #define nil NULL
 
