@@ -73,15 +73,15 @@ void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
     }
 } 
 
-void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {//unfinished
+void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa) {//unfinished
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
     if (p == nil){
         cout << "Tidak ada beasiswa yang terdaftar" << endl;
-    } else if (connect(p) == inBeasiswa){
+    } else if (connect(p) == outBeasiswa){
         terdaftarBeasiswa(pendaftar) = next(p);
     } else {
         while(next(p) != nil){
-            if(connect(next(p)) == inBeasiswa){
+            if(connect(next(p)) == outBeasiswa){
                 if(p == terdaftarBeasiswa(pendaftar)) terdaftarBeasiswa = next(p);
                 next(p) = next(next(p);
                 break;
@@ -116,14 +116,14 @@ void terimaBeasiswa(adrMhs pendaftar) {
     }
 }
            
-void pindahUniv(adrMhs pendaftar, adrUniv asalUniv) {
+void pindahUniv(adrMhs pendaftar, adrUniv newUniv) {
     keluarUniv(pendaftar);
-    masukUniv(pendaftar, asalUniv);
+    masukUniv(pendaftar, newUniv);
 }
 
-void masukUniv(adrMhs pendaftar, adrUniv asalUniv) {
+void masukUniv(adrMhs pendaftar, adrUniv newUniv) {
     if (asalUniv(pendaftar) == nil){
-        asalUniv(pendaftar) = asalUniv;
+        asalUniv(pendaftar) = newUniv;
     } else {
         cout << info(pendaftar).nama << " sudah terdaftar di universitas lain" < endl;
     }
@@ -147,10 +147,10 @@ void removeNullBeasiswa(adrMhs pendaftar) {
 }
 //end
 
-adrMhs createAdrMhs(infoMhs infoM, adrUniv asalUniv) {
+adrMhs createAdrMhs(infoMhs infoM) {
     adrMhs p;
     info(p) = infoM;
-    asalUniv(p) = asalUniv;
+    asalUniv(p) = nil;
     terdaftarBeasiswa(p) = nil;
     next(p) = nil;
     return p;
