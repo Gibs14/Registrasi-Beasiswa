@@ -99,14 +99,13 @@ void deleteMhs(listMhs &M, adrMhs p);
 
 //child dari mhs
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //inserlastChildBeasiwa
-void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //deleteChildBeasiwa
+void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa); //deleteChildBeasiwa
 void terimaBeasiswa(adrMhs pendaftar); //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
 
-void pindahUniv(adrMhs pendaftar, adrUniv asalUniv);
-void masukUniv(adrMhs pendaftar, adrUniv asalUniv);
+void pindahUniv(adrMhs pendaftar, adrUniv newUniv);
+void masukUniv(adrMhs pendaftar, adrUniv newUniv);
 void keluarUniv(adrMhs pendaftar);
 
-void removeNullUniv(adrMhs pendaftar); //remove beasiswa atau univ yg null setelah delete
 void removeNullBeasiswa(adrMhs pendaftar);
 
 
