@@ -364,3 +364,16 @@ void showUniversitas(listUniv U) {
         cout << "List universitas masih kosong, silahkan isi terlebih dahulu!" << endl;   
     }
 }
+           
+adrMhs searchMahasiswa(listMhs M, string NIM) { // bntr ges mndi dl ehe :3 - Gibran
+    
+}
+           
+adrUniv searchUniversitas(listUniv U, string nama) {
+    
+}
+           
+adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) {
+    
+}
+
