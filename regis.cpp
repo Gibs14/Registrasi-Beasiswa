@@ -193,10 +193,38 @@ void addMhs(listMhs &M, adrMhs p) {
     }
 }
 
-void deleteUniv(listUniv &U, adrUniv p) {
+void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     adrUniv x = first(U);
+    adrMhs m = first(M);
     if (first(U) != nil) {
+        while (m != nil) { //utk putus koneksi mhs dgn univ
+            if (asalUniv(m).nama == info(p).nama) {
+                asalUniv(m) = nil;    
+            }
+            m = next(m);
+        }
         
+        while (next(x) != nil) {// X nnti akan = last(U)
+            x = next(x);
+        }
+        
+        if (first(U) == p) { // delete first
+            first(U) = next(first(U));
+            next(p) = nil;
+        } else if (p == x) { // delete last
+            x = first(U);
+            while (next(next(x)) != nil) { // x nanti = 1 elemen sebelum last(U)
+                x = next(x);   
+            }
+            next(x) = nil;
+        } else {
+            x = first(U);
+            while (next(x) != p) { // x akan = 1 elemen sebelum p
+                x = next(x);   
+            }
+            next(x) = next(p);
+            next(p) = nil;
+        }
     } else {
         cout << "List Universitas sudah kosong!" << endl;
     }
