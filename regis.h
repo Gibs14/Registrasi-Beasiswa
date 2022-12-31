@@ -106,21 +106,22 @@ void pindahUniv(adrMhs pendaftar, adrUniv newUniv);
 void masukUniv(adrMhs pendaftar, adrUniv newUniv);
 void keluarUniv(adrMhs pendaftar);
 
-void removeNullBeasiswa(adrMhs pendaftar);
+void removeNullUniv(listMhs &M, adrUniv p);
+void removeNullBeasiswa(listMhs &M, adrBeasiswa p);
 
 
 //univ
 void createListUniv(listUniv &U);
 adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi);
 void addUniv(listUniv &U, adrUniv p);
-void deleteUniv(listUniv &U, listMhs &M, adrUniv p); //gw tambahin list Mhs soalnya buat univ dihapus, mhs yg tersambung ke univ tsb kan kudu dihapus dl (diputus koneksinya) - Gibran
+void deleteUniv(listUniv &U, listMhs &M, adrUniv p);
 
 //beasiswa
 void createListBeasiswa(listBeasiswa &B);
 adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, infoSyarat syarat);
 infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, char akreditasi);
 void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
-void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p);
+void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p);
 
 void showMahasiswa(listMhs M);
 void showBeasiswa(listBeasiswa B);
