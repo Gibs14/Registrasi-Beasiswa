@@ -62,6 +62,7 @@ struct elmMhs {
 struct childBeasiswa{
     //diperlukan supaya mahasiswa bisa daftar lebih dari 1 beasiswa
     adrBeasiswa connectBeasiswa; //rename jika ada yg lebih clear
+    bool diterima;
     adrChildBeasiswa next;
 };
 
