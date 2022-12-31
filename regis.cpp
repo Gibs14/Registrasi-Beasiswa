@@ -230,11 +230,70 @@ void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     }
 }
 
-void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) {
-    
+void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p) { // Dh ni logic gw buat deleteBeasiswa pli, sok bntu benerin - Gibran
+    if (first(B) != nil) {
+        adrBeasiswa x = first(B);   
+        while (next(x) != nil) {//x nnti akan = last(B)
+            x = next(x);
+        }
+        
+        if (first(B) == p) {
+            first(B) = next(first(B));
+            next(p) = nil;
+        } else if (p == x) {
+            x = first(B);
+            while (next(next(x)) != nil) { // x akan = 1 elemen sblum last(B)
+                x = next(x);   
+            }
+            next(x) = nil;
+        } else {
+            x = first(B);
+            while (next(x) != p) { // x akan = 1 elemen sblum p
+                x = next(x);   
+            }
+            next(x) = next(p);
+            next(p) = nil;
+        }
+        
+    } else {
+        cout << "List Beasiswa sudah kosong!" << endl;
+    }
 }
 
 void deleteMhs(listMhs &M, adrMhs p) {
+    if (first(M) != nil) {
+        adrMhs x = first(M);   
+        while (next(x) != nil) {//x nnti akan = last(M)
+            x = next(x);
+        }
+        
+        if (first(M) == p) {
+            first(M) = next(fist(M));
+            asalUniv(p) = nil;
+            terdaftarBeasiswa(p) = nil;
+            next(p) = nil;
+        } else if (p == x) {
+            x = first(M);
+            while (next(next(x)) != nil) { // x nanti = 1 elemen sebelum last(M)
+                x = next(x);   
+            }
+            asalUniv(p) = nil;
+            terdaftarBeasiswa(p) = nil;
+            next(x) = nil;
+        } else {
+            x = first(M);
+            while (next(x) != p) { // x akan = 1 elemen sebelum p
+                x = next(x);   
+            }
+            asalUniv(p) = nil;
+            terdaftarBeasiswa(p) = nil;
+            next(x) = next(p);
+            next(p) = nil;
+        }
+        
+    } else {
+        cout << "List Mahasiswa sudah kosong!" << endl;
+    }
     
 }
 
