@@ -121,4 +121,8 @@ infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, ch
 void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
 void deleteBeasiswa(listBeasiswa &B, adrBeasiswa p);
 
+void showMahasiswa(listMhs M);
+void showBeasiswa(listBeasiswa B);
+void showUniversitas(listUniv U);
+
 #endif // REGIS_H_INCLUDED

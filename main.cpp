@@ -2,6 +2,11 @@
 
 int main()
 {
-    cout << "Hello world!" << endl;
+    listMhs M;
+    listUniv U;
+    listBeasiswa B;
+
+    createListMhs(M);
+
     return 0;
 }
