@@ -365,15 +365,57 @@ void showUniversitas(listUniv U) {
     }
 }
            
-adrMhs searchMahasiswa(listMhs M, string NIM) { // bntr ges mndi dl ehe :3 - Gibran
-    
+adrMhs searchMahasiswa(listMhs M, string NIM) {
+    adrMhs p = first(M);
+    adrMhs hasil;
+    bool ketemu = false;
+    while (p != nil && !ketemu) {
+        if (info(p).nim == NIM) {
+            hasil = p;
+            ketemu = true;
+        }
+        p = next(p);
+    }
+    if (ketemu) {
+        return hasil;
+    } else {
+        return nil;   
+    }
 }
            
 adrUniv searchUniversitas(listUniv U, string nama) {
-    
+    adrMhs p = first(U);
+    adrMhs hasil;
+    bool ketemu = false;
+    while (p != nil && !ketemu) {
+        if (info(p).nama == nama) {
+            hasil = p;
+            ketemu = true;
+        }
+        p = next(p);
+    }
+    if (ketemu) {
+        return hasil;
+    } else {
+        return nil;   
+    }
 }
            
-adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) {
-    
+adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) { // nyari berdasar nama beasiswa kan (?)
+    adrMhs p = first(B);
+    adrMhs hasil;
+    bool ketemu = false;
+    while (p != nil && !ketemu) {
+        if (info(p).nama == nama) {
+            hasil = p;
+            ketemu = true;
+        }
+        p = next(p);
+    }
+    if (ketemu) {
+        return hasil;
+    } else {
+        return nil;   
+    }
 }
 
