@@ -77,10 +77,8 @@ void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {//unfinished
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
     if (p == nil){
         cout << "Tidak ada beasiswa yang terdaftar" << endl;
-    } else if (next(p) == nil){
-        terdaftarBeasiswa(pendaftar) = nil;
-    //} else if (terdaftarBeasiswa(pendaftar) ==  {
-        
+    } else if (connect(p) == inBeasiswa){
+        terdaftarBeasiswa(pendaftar) = next(p);
     } else {
         while(next(p) != nil){
             if(connect(next(p)) == inBeasiswa){
@@ -103,12 +101,16 @@ void terimaBeasiswa(adrMhs pendaftar) {
                 p = next(p)
                 keluarBeasiswa(pendaftar, nil);
             } else {
-                if(info(connect(p)).statusNegeri == info(asalUniv(pendaftar)).statusNegeri && info(connect(p)).akreditasi >= info(asalUniv(p)).akreditasi){
-                    if(info(connect(p)).semester == info(pendaftar).semester && info(connect(p)).ipkMin <= info(pendaftar).ipk){
-                        diterima(p) = true;
-                    }
+                diterima(p) = info(connect(p)).statusNegeri == info(asalUniv(pendaftar)).statusNegeri
+                                && info(connect(p)).akreditasi >= info(asalUniv(p)).akreditasi
+                                && info(connect(p)).semester == info(pendaftar).semester
+                                && info(connect(p)).ipkMin <= info(pendaftar).ipk);
+                if(diterima==false){
+                    p = next(p)
+                    keluarBeasiswa(pendaftar, connect(p));
+                } else {
+                    p = next(p);
                 }
-                p = next(p);
             }
         }
     }
@@ -122,16 +124,15 @@ void pindahUniv(adrMhs pendaftar, adrUniv asalUniv) {
 void masukUniv(adrMhs pendaftar, adrUniv asalUniv) {
     if (asalUniv(pendaftar) == nil){
         asalUniv(pendaftar) = asalUniv;
+    } else {
+        cout << info(pendaftar).nama << " sudah terdaftar di universitas lain" < endl;
     }
-} //
+}
                                
 void keluarUniv(adrMhs pendaftar) {
     asalUniv(pendaftar) = nil;
 }
                                
-//remove di header: void removeNullUniv(adrMhs pendaftar) {
-
-
 void removeNullBeasiswa(adrMhs pendaftar) {
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
     
