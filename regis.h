@@ -59,6 +59,12 @@ struct elmMhs {
     adrMhs next;
 };
 
+struct childBeasiswa{
+    //diperlukan supaya mahasiswa bisa daftar lebih dari 1 beasiswa
+    adrBeasiswa connectBeasiswa; //rename jika ada yg lebih clear
+    adrChildBeasiswa next;
+};
+
 struct elmUniv {
     univ info;
     adrUniv next;
@@ -67,12 +73,6 @@ struct elmUniv {
 struct elmBeasiswa {
     beasiswa info;
     adrBeasiswa next;
-};
-
-struct childBeasiswa{
-    //diperlukan supaya mahasiswa bisa daftar lebih dari 1 beasiswa
-    adrBeasiswa connectBeasiswa; //rename jika ada yg lebih clear
-    adrChildBeasiswa next;
 };
 
 struct listMhs {
