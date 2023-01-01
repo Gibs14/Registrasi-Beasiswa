@@ -246,6 +246,7 @@ void deleteUniv(listUniv &U, listMhs &M, string namaU) {
 void deleteBeasiswa(listBeasiswa &B, listMhs &M, string namaB) {
     if (first(B) != nil) {
         adrBeasiswa x = first(B);
+        adrBeasiswa p = searchBeasiswa(B, namaB);
         while (next(x) != nil) {//x nnti akan = last(B)
             x = next(x);
         }
@@ -273,9 +274,10 @@ void deleteBeasiswa(listBeasiswa &B, listMhs &M, string namaB) {
     }
 }
 
-void deleteMhs(listMhs &M, string nim) {
+void deleteMhs(listMhs &M, string nim) { 
     if (first(M) != nil) {
         adrMhs x = first(M);
+        adrMhs p = searchMahasiswa(M, nim);
         while (next(x) != nil) {//x nnti akan = last(M)
             x = next(x);
         }
