@@ -95,7 +95,7 @@ void createListMhs(listMhs &M);
 infoMhs inputDataMhs(string nama, string nim, float ipk, int semester);
 adrMhs createAdrMhs(infoMhs infoM);
 void addMhs(listMhs &M, adrMhs p);
-void deleteMhs(listMhs &M, adrMhs p);
+void deleteMhs(listMhs &M, string namaM);
 
 //child dari mhs
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //inserlastChildBeasiwa
@@ -114,14 +114,14 @@ void removeNullBeasiswa(listMhs &M, adrBeasiswa p);
 void createListUniv(listUniv &U);
 adrUniv createAdrUniv(string nama, bool statusNegri, char Akreditasi);
 void addUniv(listUniv &U, adrUniv p);
-void deleteUniv(listUniv &U, listMhs &M, adrUniv p);
+void deleteUniv(listUniv &U, listMhs &M, string namaU);
 
 //beasiswa
 void createListBeasiswa(listBeasiswa &B);
 adrBeasiswa createAdrBeasiswa(string nama, string instansi, string benefit, infoSyarat syarat);
 infoSyarat inputSyaratBeasiswa(float ipkMin, int semester, bool statusNegeri, char akreditasi);
 void addBeasiswa(listBeasiswa &B, adrBeasiswa p);
-void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p);
+void deleteBeasiswa(listBeasiswa &B, listMhs &M, string namaB);
 
 void showMahasiswa(listMhs M);
 void showBeasiswa(listBeasiswa B);
