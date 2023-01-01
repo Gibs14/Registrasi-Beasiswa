@@ -10,6 +10,10 @@ int main()
     adrUniv univ;
     adrBeasiswa bea;
 
+    cout << "================================" << endl;
+    cout << "= PROGRAM PENDAFTARAN BEASISWA =" << endl;
+    cout << "================================" << endl;
+
     //Input & Delete Data Universitas
     createListUniv(U);
 
@@ -21,7 +25,7 @@ int main()
 
     showUniversitas(U);
 
-    deleteUniv(U, univ);
+    deleteUniv(U, M,univ);
 
     showUniversitas(U);
 
@@ -35,7 +39,7 @@ int main()
 
     showBeasiswa(B);
 
-    deleteBeasiswa(B, bea);
+    deleteBeasiswa(B, M,bea);
 
     showBeasiswa(B);
 
@@ -44,31 +48,31 @@ int main()
 
     mhs = createAdrMhs(inputDataMhs("Budi", "1320656", 3.45, 4));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "BINUS"));
+    masukUniv(mhs, searchUniversitas(U, "BINUS"));
 
     mhs = createAdrMhs(inputDataMhs("Asep", "1320666", 3.23, 5));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "ITB"));
-    
+    masukUniv(mhs, searchUniversitas(U, "ITB"));
+
     mhs = createAdrMhs(inputDataMhs("Jajang", "1320548", 3.75, 4));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "BINUS"));
-    
+    masukUniv(mhs, searchUniversitas(U, "BINUS"));
+
     mhs = createAdrMhs(inputDataMhs("Naka", "2135610", 3.50, 4));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "Telkom University"));
-    
+    masukUniv(mhs, searchUniversitas(U, "Telkom University"));
+
     mhs = createAdrMhs(inputDataMhs("Abdi", "1653204", 3.80, 5));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "UNPAD"));
-    
+    masukUniv(mhs, searchUniversitas(U, "UNPAD"));
+
     mhs = createAdrMhs(inputDataMhs("Urang", "1356203", 3.44, 5));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "ITB"));
-    
+    masukUniv(mhs, searchUniversitas(U, "ITB"));
+
     mhs = createAdrMhs(inputDataMhs("Simkuring", "1526470", 3.80, 4));
     addMhs(M, mhs);
-    masukUniv(mhs, searchUniversitas(univ, "Telkom University"));
+    masukUniv(mhs, searchUniversitas(U, "Telkom University"));
 
     showMahasiswa(M);
 
@@ -78,21 +82,23 @@ int main()
     showMahasiswa(M);
 
     //Pendaftaran Beasiswa
-    mendaftarBeasiswa(searchMahasiswa(mhs, "1320656"), searchBeasiswa(bea, "Beasiswa Ikatan Dinas"));
-    mendaftarBeasiswa(searchMahasiswa(mhs, "1320666"), searchBeasiswa(bea, "Beasiswa Reguler LPDP"));
-    mendaftarBeasiswa(searchMahasiswa(mhs, "2135610"), searchBeasiswa(bea, "Beasiswa Pendidikan Indonesia"));
-    mendaftarBeasiswa(searchMahasiswa(mhs, "1320666"), searchBeasiswa(bea, "Beasiswa Ikatan Dinas"));
+    mendaftarBeasiswa(searchMahasiswa(M, "1320656"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
+    mendaftarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Reguler LPDP"));
+    mendaftarBeasiswa(searchMahasiswa(M, "2135610"), searchBeasiswa(B, "Beasiswa Pendidikan Indonesia"));
+    mendaftarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
 
     //Mahasiswa dengan NIM dibawah tidak jadi ikut beasiswa
-    keluarBeasiswa(searchMahasiswa(mhs, "1320666"), searchBeasiswa(bea, "Beasiswa Ikatan Dinas"));
+    keluarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
 
     //Cek apakah sesuai syarat atau tidak nya
-    terimaBeasiswa(searchMahasiswa(mhs, "1320656"));
-    terimaBeasiswa(searchMahasiswa(mhs, "1320666"));
-    terimaBeasiswa(searchMahasiswa(mhs, "2135610"));
+    terimaBeasiswa(searchMahasiswa(M, "1320656"));
+    terimaBeasiswa(searchMahasiswa(M, "1320666"));
+    terimaBeasiswa(searchMahasiswa(M, "2135610"));
 
     //Pindah Universitas
-    pindahUniv(searchMahasiswa(mhs, "1320666"), searchUniversitas(univ, ""))
+    pindahUniv(searchMahasiswa(M, "1320666"), searchUniversitas(U, "Telkom University"));
+
+    showMahasiswa(M);
 
     cout << "==== PROGRAM SELESAI ====" << endl;
 
