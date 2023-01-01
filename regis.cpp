@@ -109,7 +109,7 @@ void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa) {
         }
     }
 
-} 
+}
 
 
 void terimaBeasiswa(adrMhs pendaftar) {
@@ -147,7 +147,7 @@ void keluarUniv(adrMhs pendaftar) {
 
 void removeNullUniv(listMhs &M, adrUniv p){
     adrMhs m = first(M);
-    
+
     while (m != nil) {
         if (asalUniv(m) == p) {
             keluarUniv(m);
@@ -226,12 +226,12 @@ void deleteUniv(listUniv &U, listMhs &M, string namaU) {
                 x = p;
                 p = next(p);
             }
-            
+
             if (p != nil){
                 next(x) = next(p);
                 next(p) = nil;
             }
-            
+
         }
 
         removeNullUniv(M, p);
@@ -271,7 +271,7 @@ void deleteBeasiswa(listBeasiswa &B, listMhs &M, string namaB) {
     }
 }
 
-void deleteMhs(listMhs &M, string nim) { 
+void deleteMhs(listMhs &M, string nim) {
     if (first(M) != nil) {
         adrMhs x = first(M);
         adrMhs p = searchMahasiswa(M, nim);
@@ -341,9 +341,8 @@ void showMahasiswa(listMhs M) {
                 }
                 cout << endl;
             }
-
-
             p = next(p);
+            cout << endl;
         }
     } else {
         cout << "List mahasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;
@@ -362,7 +361,7 @@ void showBeasiswa(listBeasiswa B) {
             cout << "    IPK minimal         : " << info(p).syarat.ipkMin << endl;
             cout << "    Semester minimal    : " << info(p).syarat.semester << endl;
             cout << "    Status universitas  : ";
-            
+
             if (info(p).syarat.statusNegeri == true) {
                 cout << "Negeri" << endl;
             } else {
@@ -370,6 +369,7 @@ void showBeasiswa(listBeasiswa B) {
             }
             cout << "    Akreditasi minimal : " << info(p).syarat.akreditasi << endl << endl;
             p = next(p);
+            cout << endl;
         }
     } else {
         cout << "List beasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;
@@ -389,6 +389,7 @@ void showUniversitas(listUniv U) {
                 cout << "Status : Swasta" << endl;
             }
             p = next(p);
+            cout << endl;
         }
     } else {
         cout << "List universitas masih kosong, silahkan isi terlebih dahulu!" << endl;
