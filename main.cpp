@@ -1,7 +1,6 @@
 #include "regis.h"
 
-int main()
-{
+int main() {
     listMhs M;
     listUniv U;
     listBeasiswa B;
@@ -25,7 +24,7 @@ int main()
 
     showUniversitas(U);
 
-    deleteUniv(U, M,univ);
+    deleteUniv(U, M, "ITB");
 
     showUniversitas(U);
 
@@ -39,7 +38,7 @@ int main()
 
     showBeasiswa(B);
 
-    deleteBeasiswa(B, M,bea);
+    deleteBeasiswa(B, M, "Beasiswa Pendidikan Indonesia");
 
     showBeasiswa(B);
 
@@ -76,8 +75,8 @@ int main()
 
     showMahasiswa(M);
 
-    deleteMhs(M, mhs);
-    deleteMhs(M, mhs);
+    deleteMhs(M, "1526470");
+    deleteMhs(M, "1356203");
 
     showMahasiswa(M);
 
