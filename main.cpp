@@ -18,6 +18,7 @@ int main()
     //Input & Delete Data Universitas
     createListUniv(U);
     createListBeasiswa(B);
+    createListMhs(M);
 
     addUniv(U, createAdrUniv("Telkom University", false, 'A'));
     addUniv(U, createAdrUniv("ITB", true, 'A'));
@@ -46,16 +47,14 @@ int main()
     showBeasiswa(B);
     cin.ignore();
 
-    //deleteBeasiswa(B, M, "Global Korean Scholarship");
-    //cout << "== Menghapus beasiswa Global Korean Scholarship sukses ==" << endl;
-    //cin.ignore();
+    deleteBeasiswa(B, M, "Global Korean Scholarship");
+    cout << "== Menghapus beasiswa Global Korean Scholarship sukses ==" << endl;
+    cin.ignore();
 
-    //showBeasiswa(B);
-    //cin.ignore();
+    showBeasiswa(B);
+    cin.ignore();
 
     //Input & Delete Data Mahasiswa
-    createListMhs(M);
-
     mhs = createAdrMhs(inputDataMhs("Budi", "1320656", 3.45, 4));
     addMhs(M, mhs);
     masukUniv(mhs, searchUniversitas(U, "Universitas Kristen Maranatha"));
@@ -99,7 +98,7 @@ int main()
     //Pindah Universitas
     pindahUniv(searchMahasiswa(M, "1320666"), searchUniversitas(U, "Telkom University"));
     cout << "== Pindah Universitas dengan NIM 1230666 sukses! ==" << endl;
-    //cin.ignore();
+    cin.ignore();
     showMahasiswa(M);
 
     //Pendaftaran Beasiswa
