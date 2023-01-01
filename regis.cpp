@@ -60,7 +60,7 @@ void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar), temp = new childBeasiswa;
 
     connect(temp) = inBeasiswa;
-    bool diterima = false;
+    diterima(temp) = false;
     next(temp) = nil;
     
     bool sudahTerdaftar = false;
@@ -115,19 +115,19 @@ void terimaBeasiswa(adrMhs pendaftar) {
     adrBeasiswa x = connect(p);
 
     while(p != nil){
-        if(diterima(p) == false{
+        if(diterima(p) == false){
             if(connect(p) == nil){
                 p = next(p);
                 keluarBeasiswa(pendaftar, nil);
             } else {
-                diterima(p) = info(x).statusNegeri == info(asalUniv(pendaftar)).statusNegeri
-                                && info(x).akreditasi >= info(asalUniv(p)).akreditasi
-                                && info(x).semester == info(pendaftar).semester
-                                && info(x).ipkMin <= info(pendaftar).ipk);
+                diterima(p) = info(x).syarat.statusNegeri == info(asalUniv(pendaftar)).statusNegeri
+                                && info(x).syarat.akreditasi >= info(asalUniv(pendaftar)).akreditasi
+                                && info(x).syarat.semester <= info(pendaftar).semester
+                                && info(x).syarat.ipkMin <= info(pendaftar).ipk;
                 
                 p = next(p);
                 x = connect(p);
-                if(diterima==false) keluarBeasiswa(pendaftar, x);
+                if(diterima(p)==false) keluarBeasiswa(pendaftar, x);
             }
         }
     }
@@ -140,12 +140,12 @@ void pindahUniv(adrMhs pendaftar, adrUniv newUniv) {
 
 void masukUniv(adrMhs pendaftar, adrUniv newUniv) {
     if (asalUniv(pendaftar) == nil) asalUniv(pendaftar) = newUniv;
-    else cout << info(pendaftar).nama << " sudah terdaftar di universitas lain" < endl;
+    else cout << info(pendaftar).nama << " sudah terdaftar di universitas lain" << endl;
 }
 
 void keluarUniv(adrMhs pendaftar) {
     if (asalUniv(pendaftar) != nil) asalUniv(pendaftar) = nil;
-    else cout << info(pendaftar).nama << " belum terdaftar di universitas manapun" < endl;
+    else cout << info(pendaftar).nama << " belum terdaftar di universitas manapun" << endl;
 }
 
 void removeNullUniv(listMhs &M, adrUniv p){
@@ -153,7 +153,7 @@ void removeNullUniv(listMhs &M, adrUniv p){
     
     while (m != nil) {
         if (asalUniv(m) == p) {
-            asalUniv(m) = nil;
+            keluarUniv(m);
         }
         m = next(m);
     }
@@ -161,7 +161,6 @@ void removeNullUniv(listMhs &M, adrUniv p){
 
 void removeNullBeasiswa(listMhs &M, adrBeasiswa p){
     adrMhs m = first(M);
-    adrChildBeasiswa childB = terdaftarBeasiswa(m);
 
     while(m != nil){
         keluarBeasiswa(m, p);
@@ -171,7 +170,7 @@ void removeNullBeasiswa(listMhs &M, adrBeasiswa p){
 //end
 
 adrMhs createAdrMhs(infoMhs infoM) {
-    adrMhs p;
+    adrMhs p = new elmMhs;
     info(p) = infoM;
     asalUniv(p) = nil;
     terdaftarBeasiswa(p) = nil;
@@ -218,7 +217,6 @@ void addMhs(listMhs &M, adrMhs p) {
 
 void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     adrUniv x = first(U);
-    adrMhs m = first(M);
     if (first(U) != nil) {
         while (next(x) != nil) {// X nnti akan = last(U)
             x = next(x);
@@ -242,7 +240,7 @@ void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
             next(p) = nil;
         }
         
-        void removeNullUniv(&M, p);
+        removeNullUniv(M, p);
     } else {
         cout << "List Universitas sudah kosong!" << endl;
     }
@@ -272,7 +270,7 @@ void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p) {
             next(x) = next(p);
             next(p) = nil;
         }
-        void removeNullBeasiswa(&M, p);
+        removeNullBeasiswa(M, p);
     } else {
         cout << "List Beasiswa sudah kosong!" << endl;
     }
@@ -286,7 +284,7 @@ void deleteMhs(listMhs &M, adrMhs p) {
         }
 
         if (first(M) == p) {
-            first(M) = next(fist(M));
+            first(M) = next(first(M));
             asalUniv(p) = nil;
             terdaftarBeasiswa(p) = nil;
             next(p) = nil;
@@ -318,24 +316,24 @@ void deleteMhs(listMhs &M, adrMhs p) {
 
 void showMahasiswa(listMhs M) {
     if (first(M) != nil) {
-        cout << "Mahasiswa" << endl < endl;
+        cout << "Mahasiswa" << endl << endl;
         adrMhs p = first(M);
         adrBeasiswa x;
         adrChildBeasiswa childB;
         int i;
         while (p != nil) {
             childB = terdaftarBeasiswa(p);
-            x = connect(childB);
             cout << "Nama     : " << info(p).nama << endl;
             cout << "NIM      : " << info(p).nim << endl;
             cout << "IPK      : " << info(p).ipk << endl;
             cout << "Semester :" << info(p).semester << endl;
-            cout << "Asal universitas : " << info(p).asalUniv.nama << endl;
+            cout << "Asal universitas : " << info(asalUniv(p)).nama << endl;
             
             i = 0;
             if (childB == nil) {
                 cout << info(p).nama << " Tidak terdaftar di beasiswa apapun" << endl;
             } else {
+                x = connect(childB);
                 cout << "Beasiswa yang terdaftar :" << info(x).nama << endl;
                 while (childB != nil) {
                     cout << i++ << ". " << info(x).nama << endl;
@@ -353,12 +351,12 @@ void showMahasiswa(listMhs M) {
 
 void showBeasiswa(listBeasiswa B) {
     if (first(B) != nil) {
-        cout << "Beasiswa" << endl < endl;
+        cout << "Beasiswa" << endl << endl;
         adrBeasiswa p = first(B);
         while (p != nil) {
             cout << "Nama     : " << info(p).nama << endl;
             cout << "Instansi : " << info(p).instansi << endl;
-            cout << "Benefit  : " << info(p).benefit << endl << endl;
+            cout << "Benefit  : " << info(p).benefit << endl;
             cout << "Syarat beasiswa :" << endl;
             cout << "    IPK minimal         : " << info(p).syarat.ipkMin << endl;
             cout << "    Semester minimal    : " << info(p).syarat.semester << endl;
@@ -369,7 +367,7 @@ void showBeasiswa(listBeasiswa B) {
             } else {
                 cout << "Swasta" << endl;
             }
-            cout << "    Akreditasi minimal : " << info(p).syarat.akreditasi << endl;
+            cout << "    Akreditasi minimal : " << info(p).syarat.akreditasi << endl << endl;
             p = next(p);
         }
     } else {
@@ -379,7 +377,7 @@ void showBeasiswa(listBeasiswa B) {
 
 void showUniversitas(listUniv U) {
     if (first(U) != nil) {
-        cout << "Universitas" << endl < endl;
+        cout << "Universitas" << endl << endl;
         adrUniv p = first(U);
         while (p != nil) {
             cout << "Nama : " << info(p).nama << endl;
@@ -415,8 +413,8 @@ adrMhs searchMahasiswa(listMhs M, string NIM) {
 }
 
 adrUniv searchUniversitas(listUniv U, string nama) {
-    adrMhs p = first(U);
-    adrMhs hasil;
+    adrUniv p = first(U);
+    adrUniv hasil;
     bool ketemu = false;
     while (p != nil && !ketemu) {
         if (info(p).nama == nama) {
@@ -433,8 +431,8 @@ adrUniv searchUniversitas(listUniv U, string nama) {
 }
 
 adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) { // nyari berdasar nama beasiswa kan (?)
-    adrMhs p = first(B);
-    adrMhs hasil;
+    adrBeasiswa p = first(B);
+    adrBeasiswa hasil;
     bool ketemu = false;
     while (p != nil && !ketemu) {
         if (info(p).nama == nama) {
@@ -449,4 +447,3 @@ adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) { // nyari berdasar nama
         return nil;
     }
 }
-
