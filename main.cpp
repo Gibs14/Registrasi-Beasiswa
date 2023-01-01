@@ -27,12 +27,12 @@ int main()
     showUniversitas(U);
     cin.ignore();
 
-    deleteUniv(U, M, "BINUS");
-    cout << "== Menghapus Universitas BINUS sukses ==" << endl;
-    cin.ignore();
+    //deleteUniv(U, M, "BINUS");
+    //cout << "== Menghapus Universitas BINUS sukses ==" << endl;
+    //cin.ignore();
 
-    showUniversitas(U);
-    cin.ignore();
+    //showUniversitas(U);
+    //cin.ignore();
 
     //Input & Delete Data Beasiswa
     createListBeasiswa(B);
@@ -43,14 +43,14 @@ int main()
     addBeasiswa(B, createAdrBeasiswa("Global Korean Scholarship", "Ministry of Foreign and Education Korea", "Tunjagan + Beasiswa Full", inputSyaratBeasiswa(3.10, 5, false, 'B')));
 
     showBeasiswa(B);
-    cin.ignore();
+    //cin.ignore();
 
-    deleteBeasiswa(B, M, "Global Korean Scholarship");
-    cout << "== Menghapus beasiswa Global Korean Scholarship sukses ==" << endl;
-    cin.ignore();
+    //deleteBeasiswa(B, M, "Global Korean Scholarship");
+    //cout << "== Menghapus beasiswa Global Korean Scholarship sukses ==" << endl;
+    //cin.ignore();
 
-    showBeasiswa(B);
-    cin.ignore();
+    //showBeasiswa(B);
+    //cin.ignore();
 
     //Input & Delete Data Mahasiswa
     createListMhs(M);
@@ -98,7 +98,7 @@ int main()
     //Pindah Universitas
     pindahUniv(searchMahasiswa(M, "1320666"), searchUniversitas(U, "Telkom University"));
     cout << "== Pindah Universitas dengan NIM 1230666 sukses! ==" << endl;
-    cin.ignore();
+    //cin.ignore();
     showMahasiswa(M);
 
     //Pendaftaran Beasiswa
@@ -119,7 +119,7 @@ int main()
 
     //Mahasiswa dengan NIM dibawah tidak jadi ikut beasiswa
     keluarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
-    cout << "== Mahasiswa Dengan NIM 1320666 Batal mendaftar beasiswa! ==" << endl;
+    cout << "== Mahasiswa Dengan NIM 1320666 Batal mendaftar beasiswa Ikatan Dinas! ==" << endl;
     cin.ignore();
     showMahasiswa(M);
 
@@ -129,6 +129,9 @@ int main()
     terimaBeasiswa(searchMahasiswa(M, "2135610"));
     cout << "================================" << endl;
     cout << "= PENDAFTARAN BEASISWA DITUTUP =" << endl;
+    cout << "================================" << endl <<endl;
+    cout << "================================" << endl;
+    cout << "= SELEKSI PERYSARATAN BEASISWA =" << endl;
     cout << "================================" << endl;
     cin.ignore();
     showMahasiswa(M);
