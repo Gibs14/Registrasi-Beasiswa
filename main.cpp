@@ -1,7 +1,6 @@
 #include "regis.h"
 
-int main()
-{
+int main() {
     listMhs M;
     listUniv U;
     listBeasiswa B;
