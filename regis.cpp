@@ -215,30 +215,23 @@ void addMhs(listMhs &M, adrMhs p) {
 void deleteUniv(listUniv &U, listMhs &M, string namaU) {
     adrUniv x = first(U), p;
     if (first(U) != nil) {
-        while (next(x) != nil) {// X nnti akan = last(U)
-            x = next(x);
-        }
-
         if (info(first(U)).nama == namaU) { // delete first
-            p=x;
+            p=first(U);
             first(U) = next(first(U));
-            next(p) = nil;
-        } else if (namaU == info(x).nama) { // delete last
-            x = first(U);
-            while (next(x) != nil) { // x nanti = 1 elemen sebelum last(U)
-                x = next(x);
-            }
-            p=x;
-            next(x) = nil;
             next(p) = nil;
         } else {
             x = first(U);
-            while (next(x) != namaU) { // x akan = 1 elemen sebelum p
-                x = next(x);
+            p = next(first(U));
+            while (info(p).nama != namaU && p != nil){
+                x = p;
+                p = next(p);
             }
-            p=next(x);
-            next(x) = next(p);
-            next(p) = nil;
+            
+            if (p != nil){
+                next(x) = next(p);
+                next(p) = nil;
+            }
+            
         }
 
         removeNullUniv(M, p);
