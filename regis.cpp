@@ -53,7 +53,6 @@ infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
     return p;
 }
 
-//Masih?
 //prosedur untuk child dari elmMahasiswa
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
     //insertlastChildBeasiwa
@@ -62,7 +61,7 @@ void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
     connect(temp) = inBeasiswa;
     diterima(temp) = false;
     next(temp) = nil;
-    
+
     bool sudahTerdaftar = false;
 
     if(terdaftarBeasiswa(pendaftar) == nil){
@@ -81,33 +80,37 @@ void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
     }
 }
 
-//Masih?
-void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa) {//unfinished
+void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa) {
+    //deleteChildBeasiwa
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar), prec;
     adrBeasiswa x = connect(p);
-    
-    if (p == nil){
-        cout << info(pendaftar).nama << " belum mendaftar di beasiswa manapun" << endl;
-    } else if (x == outBeasiswa){
-        terdaftarBeasiswa(pendaftar) = next(p);
-    } else {
-        prec = p;
-        p = next(p);
-        x = connect(p);
-        
-        while(p != nil){
-            if(x == outBeasiswa){
-                next(prec) = next(p);
-                next(p) = nil;
-                break;
-            }
-                               
+
+    if (outBeasiswa != nil){
+        if (p == nil){
+            cout << info(pendaftar).nama << " belum mendaftar di beasiswa manapun" << endl;
+        } else if (x == outBeasiswa){
+            terdaftarBeasiswa(pendaftar) = next(p);
+        } else {
             prec = p;
             p = next(p);
-            x = connect(p);
+
+
+            while(p != nil){
+                x = connect(p);
+                if(x == outBeasiswa){
+                    next(prec) = next(p);
+                    next(p) = nil;
+                    break;
+                }
+
+                prec = p;
+                p = next(p);
+            }
         }
     }
-} //deleteChildBeasiwa
+
+} 
+
 
 void terimaBeasiswa(adrMhs pendaftar) {
 //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
@@ -116,20 +119,14 @@ void terimaBeasiswa(adrMhs pendaftar) {
 
     while(p != nil){
         if(diterima(p) == false){
-            if(connect(p) == nil){
-                p = next(p);
-                keluarBeasiswa(pendaftar, nil);
-            } else {
-                diterima(p) = info(x).syarat.statusNegeri == info(asalUniv(pendaftar)).statusNegeri
-                                && info(x).syarat.akreditasi >= info(asalUniv(pendaftar)).akreditasi
-                                && info(x).syarat.semester <= info(pendaftar).semester
-                                && info(x).syarat.ipkMin <= info(pendaftar).ipk;
-                
-                p = next(p);
-                x = connect(p);
-                if(diterima(p)==false) keluarBeasiswa(pendaftar, x);
-            }
+            x = connect(p);
+            diterima(p) = info(x).syarat.statusNegeri == info(asalUniv(pendaftar)).statusNegeri
+                            && info(x).syarat.akreditasi >= info(asalUniv(pendaftar)).akreditasi
+                            && info(x).syarat.semester <= info(pendaftar).semester
+                            && info(x).syarat.ipkMin <= info(pendaftar).ipk;
+            if(diterima(p)==false) keluarBeasiswa(pendaftar, x);
         }
+        p = next(p);
     }
 }
 
@@ -328,19 +325,24 @@ void showMahasiswa(listMhs M) {
             cout << "IPK      : " << info(p).ipk << endl;
             cout << "Semester :" << info(p).semester << endl;
             cout << "Asal universitas : " << info(asalUniv(p)).nama << endl;
-            
-            i = 0;
+
+            i = 1;
             if (childB == nil) {
-                cout << info(p).nama << " Tidak terdaftar di beasiswa apapun" << endl;
+                cout << info(p).nama << " tidak terdaftar di beasiswa apapun" << endl << endl;
             } else {
                 x = connect(childB);
-                cout << "Beasiswa yang terdaftar :" << info(x).nama << endl;
+                cout << "Beasiswa yang terdaftar :" << endl;
                 while (childB != nil) {
-                    cout << i++ << ". " << info(x).nama << endl;
-                    childB = next(childB);
                     x = connect(childB);
+                    cout << i++ << ". " << info(x).nama;
+                    if(diterima(childB) == true) cout << "- DITERIMA";
+                    cout << endl;
+                    childB = next(childB);
+
                 }
+                cout << endl;
             }
+
 
             p = next(p);
         }
