@@ -95,7 +95,7 @@ void createListMhs(listMhs &M);
 infoMhs inputDataMhs(string nama, string nim, float ipk, int semester);
 adrMhs createAdrMhs(infoMhs infoM);
 void addMhs(listMhs &M, adrMhs p);
-void deleteMhs(listMhs &M, string namaM);
+void deleteMhs(listMhs &M, string NIM);
 
 //child dari mhs
 void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa); //inserlastChildBeasiwa
