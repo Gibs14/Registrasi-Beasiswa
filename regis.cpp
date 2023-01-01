@@ -212,17 +212,17 @@ void addMhs(listMhs &M, adrMhs p) {
     }
 }
 
-void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
+void deleteUniv(listUniv &U, listMhs &M, string namaU) {
     adrUniv x = first(U);
     if (first(U) != nil) {
         while (next(x) != nil) {// X nnti akan = last(U)
             x = next(x);
         }
 
-        if (first(U) == p) { // delete first
+        if (info(first(U)).nama == namaU) { // delete first
             first(U) = next(first(U));
             next(p) = nil;
-        } else if (p == x) { // delete last
+        } else if (namaU == info(x).nama) { // delete last
             x = first(U);
             while (next(next(x)) != nil) { // x nanti = 1 elemen sebelum last(U)
                 x = next(x);
@@ -243,17 +243,17 @@ void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     }
 }
 
-void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p) {
+void deleteBeasiswa(listBeasiswa &B, listMhs &M, string namaB) {
     if (first(B) != nil) {
         adrBeasiswa x = first(B);
         while (next(x) != nil) {//x nnti akan = last(B)
             x = next(x);
         }
 
-        if (first(B) == p) {
+        if (info(first(B)).nama == namaB) {
             first(B) = next(first(B));
             next(p) = nil;
-        } else if (p == x) {
+        } else if (namaB == info(x).nama) {
             x = first(B);
             while (next(next(x)) != nil) { // x akan = 1 elemen sblum last(B)
                 x = next(x);
@@ -273,19 +273,19 @@ void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p) {
     }
 }
 
-void deleteMhs(listMhs &M, adrMhs p) {
+void deleteMhs(listMhs &M, string nim) {
     if (first(M) != nil) {
         adrMhs x = first(M);
         while (next(x) != nil) {//x nnti akan = last(M)
             x = next(x);
         }
 
-        if (first(M) == p) {
+        if (info(first(M)).nim == nim) {
             first(M) = next(first(M));
             asalUniv(p) = nil;
             terdaftarBeasiswa(p) = nil;
             next(p) = nil;
-        } else if (p == x) {
+        } else if (nim == info(x).nim) {
             x = first(M);
             while (next(next(x)) != nil) { // x nanti = 1 elemen sebelum last(M)
                 x = next(x);
