@@ -17,6 +17,7 @@ int main()
 
     //Input & Delete Data Universitas
     createListUniv(U);
+    createListBeasiswa(B);
 
     addUniv(U, createAdrUniv("Telkom University", false, 'A'));
     addUniv(U, createAdrUniv("ITB", true, 'A'));
@@ -27,15 +28,15 @@ int main()
     showUniversitas(U);
     cin.ignore();
 
-    //deleteUniv(U, M, "BINUS");
-    //cout << "== Menghapus Universitas BINUS sukses ==" << endl;
-    //cin.ignore();
+    deleteUniv(U, M, "BINUS");
+    cout << "== Menghapus Universitas BINUS sukses ==" << endl;
+    cin.ignore();
 
-    //showUniversitas(U);
-    //cin.ignore();
+    showUniversitas(U);
+    cin.ignore();
 
     //Input & Delete Data Beasiswa
-    createListBeasiswa(B);
+
 
     addBeasiswa(B, createAdrBeasiswa("Beasiswa Ikatan Dinas", "Telkom Indonesia", "Beasiswa Full sampai Lulus", inputSyaratBeasiswa(3.50, 5, false, 'A')));
     addBeasiswa(B, createAdrBeasiswa("Beasiswa Pendidikan Indonesia", "KEMENDIKBUD-RISTEK", "Beasiswa Full sampai Lulus + tunjagan bulanan", inputSyaratBeasiswa(3.00, 5, false, 'A')));
@@ -43,7 +44,7 @@ int main()
     addBeasiswa(B, createAdrBeasiswa("Global Korean Scholarship", "Ministry of Foreign and Education Korea", "Tunjagan + Beasiswa Full", inputSyaratBeasiswa(3.10, 5, false, 'B')));
 
     showBeasiswa(B);
-    //cin.ignore();
+    cin.ignore();
 
     //deleteBeasiswa(B, M, "Global Korean Scholarship");
     //cout << "== Menghapus beasiswa Global Korean Scholarship sukses ==" << endl;
@@ -109,6 +110,7 @@ int main()
 
     mendaftarBeasiswa(searchMahasiswa(M, "1320656"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
     mendaftarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Reguler LPDP"));
+    mendaftarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Pendidikan Indonesia"));
     mendaftarBeasiswa(searchMahasiswa(M, "1320548"), searchBeasiswa(B, "Beasiswa Reguler LPDP"));
     mendaftarBeasiswa(searchMahasiswa(M, "2135610"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
     mendaftarBeasiswa(searchMahasiswa(M, "2135610"), searchBeasiswa(B, "Beasiswa Pendidikan Indonesia"));
@@ -118,20 +120,22 @@ int main()
     showMahasiswa(M);
 
     //Mahasiswa dengan NIM dibawah tidak jadi ikut beasiswa
-    keluarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
-    cout << "== Mahasiswa Dengan NIM 1320666 Batal mendaftar beasiswa Ikatan Dinas! ==" << endl;
+    keluarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Reguler LPDP"));
+    cout << "== Mahasiswa Dengan NIM 1320666 Batal mendaftar Beasiswa Reguler LPDP! ==" << endl;
     cin.ignore();
     showMahasiswa(M);
+
+    cout << "================================" << endl;
+    cout << "= PENDAFTARAN BEASISWA DITUTUP =" << endl;
+    cout << "================================" << endl <<endl;
+    cin.ignore();
 
     //Cek apakah sesuai syarat atau tidak nya
     terimaBeasiswa(searchMahasiswa(M, "1320656"));
     terimaBeasiswa(searchMahasiswa(M, "1320666"));
     terimaBeasiswa(searchMahasiswa(M, "2135610"));
     cout << "================================" << endl;
-    cout << "= PENDAFTARAN BEASISWA DITUTUP =" << endl;
-    cout << "================================" << endl <<endl;
-    cout << "================================" << endl;
-    cout << "= SELEKSI PERYSARATAN BEASISWA =" << endl;
+    cout << "= SELEKSI PERSYARATAN BEASISWA =" << endl;
     cout << "================================" << endl;
     cin.ignore();
     showMahasiswa(M);
