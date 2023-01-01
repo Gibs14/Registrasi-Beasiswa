@@ -53,26 +53,28 @@ infoMhs inputDataMhs(string nama, string nim, float ipk, int semester) {
     return p;
 }
 
+//MASIH ADA BUILD ERROR -F
 //prosedur untuk child dari elmMahasiswa
-void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) { 
+void mendaftarBeasiswa(adrMhs pendaftar, adrBeasiswa inBeasiswa) {
     //insertlastChildBeasiwa
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar), temp = new childBeasiswa;
-    
+
     connect(temp) = inBeasiswa
     next(temp) = nil;
-    
-    
+
+
     if(terdaftarBeasiswa(pendaftar) == nil){
         terdaftarBeasiswa(pendaftar) = temp;
     } else {
         while(next(p) != nil){
             p = next(p);
         }
-        
+
         next(p) = temp;
     }
-} 
+}
 
+//INI MASIH BUILD ERROR -F
 void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa) {//unfinished
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
     if (p == nil){
@@ -94,7 +96,7 @@ void keluarBeasiswa(adrMhs pendaftar, adrBeasiswa outBeasiswa) {//unfinished
 void terimaBeasiswa(adrMhs pendaftar) {
 //cek mahasiswa memenuhi syarat atau tidak. Jika tidak, remove.
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
-    
+
     while(p != nil){
         if(diterima(p) == false{
             if(connect(p) == nil){
@@ -115,7 +117,7 @@ void terimaBeasiswa(adrMhs pendaftar) {
         }
     }
 }
-           
+
 void pindahUniv(adrMhs pendaftar, adrUniv newUniv) {
     keluarUniv(pendaftar);
     masukUniv(pendaftar, newUniv);
@@ -128,25 +130,25 @@ void masukUniv(adrMhs pendaftar, adrUniv newUniv) {
         cout << info(pendaftar).nama << " sudah terdaftar di universitas lain" < endl;
     }
 }
-                               
+
 void keluarUniv(adrMhs pendaftar) {
     asalUniv(pendaftar) = nil;
 }
- 
+
 void removeNullUniv(listMhs &M, adrUniv p){
-    
+
 }
-           
+
 void removeNullBeasiswa(listMhs &M, adrBeasiswa p){
     adrChildBeasiswa p = terdaftarBeasiswa(pendaftar);
-    
+
     while(p != nil){
         if(connect(p) == nil){
             p = next(p)
             keluarBeasiswa(pendaftar, nil);
         } else {
             p = next(p);
-        } 
+        }
     }
 }
 //end
@@ -203,28 +205,28 @@ void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     if (first(U) != nil) {
         while (m != nil) { //utk putus koneksi mhs dgn univ
             if (asalUniv(m).nama == info(p).nama) {
-                asalUniv(m) = nil;    
+                asalUniv(m) = nil;
             }
             m = next(m);
         }
-        
+
         while (next(x) != nil) {// X nnti akan = last(U)
             x = next(x);
         }
-        
+
         if (first(U) == p) { // delete first
             first(U) = next(first(U));
             next(p) = nil;
         } else if (p == x) { // delete last
             x = first(U);
             while (next(next(x)) != nil) { // x nanti = 1 elemen sebelum last(U)
-                x = next(x);   
+                x = next(x);
             }
             next(x) = nil;
         } else {
             x = first(U);
             while (next(x) != p) { // x akan = 1 elemen sebelum p
-                x = next(x);   
+                x = next(x);
             }
             next(x) = next(p);
             next(p) = nil;
@@ -232,35 +234,35 @@ void deleteUniv(listUniv &U, listMhs &M, adrUniv p) {
     } else {
         cout << "List Universitas sudah kosong!" << endl;
     }
-    
+
     void removeNullUniv(&M, p);
 }
 
 void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p) {
     if (first(B) != nil) {
-        adrBeasiswa x = first(B);   
+        adrBeasiswa x = first(B);
         while (next(x) != nil) {//x nnti akan = last(B)
             x = next(x);
         }
-        
+
         if (first(B) == p) {
             first(B) = next(first(B));
             next(p) = nil;
         } else if (p == x) {
             x = first(B);
             while (next(next(x)) != nil) { // x akan = 1 elemen sblum last(B)
-                x = next(x);   
+                x = next(x);
             }
             next(x) = nil;
         } else {
             x = first(B);
             while (next(x) != p) { // x akan = 1 elemen sblum p
-                x = next(x);   
+                x = next(x);
             }
             next(x) = next(p);
             next(p) = nil;
         }
-        
+
     } else {
         cout << "List Beasiswa sudah kosong!" << endl;
     }
@@ -269,11 +271,11 @@ void deleteBeasiswa(listBeasiswa &B, listMhs &M, adrBeasiswa p) {
 
 void deleteMhs(listMhs &M, adrMhs p) {
     if (first(M) != nil) {
-        adrMhs x = first(M);   
+        adrMhs x = first(M);
         while (next(x) != nil) {//x nnti akan = last(M)
             x = next(x);
         }
-        
+
         if (first(M) == p) {
             first(M) = next(fist(M));
             asalUniv(p) = nil;
@@ -282,7 +284,7 @@ void deleteMhs(listMhs &M, adrMhs p) {
         } else if (p == x) {
             x = first(M);
             while (next(next(x)) != nil) { // x nanti = 1 elemen sebelum last(M)
-                x = next(x);   
+                x = next(x);
             }
             asalUniv(p) = nil;
             terdaftarBeasiswa(p) = nil;
@@ -290,21 +292,21 @@ void deleteMhs(listMhs &M, adrMhs p) {
         } else {
             x = first(M);
             while (next(x) != p) { // x akan = 1 elemen sebelum p
-                x = next(x);   
+                x = next(x);
             }
             asalUniv(p) = nil;
             terdaftarBeasiswa(p) = nil;
             next(x) = next(p);
             next(p) = nil;
         }
-        
+
     } else {
         cout << "List Mahasiswa sudah kosong!" << endl;
     }
-    
+
 }
 
-           
+
 void showMahasiswa(listMhs M) {
     if (first(M) != nil) {
         adrMhs p = first(M);
@@ -315,23 +317,23 @@ void showMahasiswa(listMhs M) {
             cout << "IPK " << info(p).nama << " : " << info(p).ipk << endl;
             cout << "Semester " << info(p).nama << " : " << info(p).semester << endl;
             cout << "Nama universitas yang diikuti oleh " << info(p).nama << " : " << info(p).asalUniv.nama << endl;
-            
+
             if (x == nil) {
-                cout << info(p).nama << " Tidak terdaftar di beasiswa apapun" << endl;   
+                cout << info(p).nama << " Tidak terdaftar di beasiswa apapun" << endl;
             } else {
                 while (x != nil) {
                     cout << "Nama beasiswa yang diambil oleb " << info(p).nama << " : " << x.nama << endl;
                     x = next(x);
                 }
             }
-            
+
             p = next(p);
         }
     } else {
-        cout << "List mahasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;   
+        cout << "List mahasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;
     }
 }
-           
+
 void showBeasiswa(listBeasiswa B) {
     if (first(B) != nil) {
         adrBeasiswa p = first(B);
@@ -344,16 +346,16 @@ void showBeasiswa(listBeasiswa B) {
             if (info(p).syarat.statusNegeri == true) {
                 cout << "Syarat status universitas penerima beasiswa : Negeri" << endl;
             } else {
-                cout << "Syarat status universitas penerima beasiswa : Swasta" << endl;   
+                cout << "Syarat status universitas penerima beasiswa : Swasta" << endl;
             }
             cout << "Berikut syarat minimal akreditasi universitas penerima beasiswa : " << info(p).syarat.akreditasi << endl;
             p = next(p);
         }
     } else {
-        cout << "List beasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;   
+        cout << "List beasiswa masih kosong, silahkan isi terlebih dahulu!" << endl;
     }
 }
-           
+
 void showUniversitas(listUniv U) {
     if (first(U) != nil) {
         adrUniv p = first(U);
@@ -363,15 +365,15 @@ void showUniversitas(listUniv U) {
             if (info(p).statusNegeri == true) {
                 cout << "Status universitas : Negeri" << endl;
             } else {
-                cout << "Status universitas : Swasta" << endl;   
+                cout << "Status universitas : Swasta" << endl;
             }
             p = next(p);
         }
     } else {
-        cout << "List universitas masih kosong, silahkan isi terlebih dahulu!" << endl;   
+        cout << "List universitas masih kosong, silahkan isi terlebih dahulu!" << endl;
     }
 }
-           
+
 adrMhs searchMahasiswa(listMhs M, string NIM) {
     adrMhs p = first(M);
     adrMhs hasil;
@@ -386,10 +388,10 @@ adrMhs searchMahasiswa(listMhs M, string NIM) {
     if (ketemu) {
         return hasil;
     } else {
-        return nil;   
+        return nil;
     }
 }
-           
+
 adrUniv searchUniversitas(listUniv U, string nama) {
     adrMhs p = first(U);
     adrMhs hasil;
@@ -404,10 +406,10 @@ adrUniv searchUniversitas(listUniv U, string nama) {
     if (ketemu) {
         return hasil;
     } else {
-        return nil;   
+        return nil;
     }
 }
-           
+
 adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) { // nyari berdasar nama beasiswa kan (?)
     adrMhs p = first(B);
     adrMhs hasil;
@@ -422,7 +424,7 @@ adrBeasiswa searchBeasiswa(listBeasiswa B, string nama) { // nyari berdasar nama
     if (ketemu) {
         return hasil;
     } else {
-        return nil;   
+        return nil;
     }
 }
 
