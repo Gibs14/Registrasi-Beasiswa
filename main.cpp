@@ -26,12 +26,13 @@ int main() {
     addUniv(U, createAdrUniv("Universitas Kristen Maranatha", false, 'B'));
 
     showUniversitas(U);
-    cout << "Tekan ENTER untuk melanjutkan";
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
     cout << endl;
 
     deleteUniv(U, M, "BINUS");
     cout << "== Menghapus Universitas BINUS sukses =="<< endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
 
     showUniversitas(U);
@@ -54,6 +55,7 @@ int main() {
 
     deleteBeasiswa(B, M, "Global Korean Scholarship");
     cout << "== Menghapus beasiswa Global Korean Scholarship sukses =="<< endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
 
     showBeasiswa(B);
@@ -93,10 +95,12 @@ int main() {
     showMahasiswa(M);
 
     deleteMhs(M, "1526470");
-    cout << "== Menghapus mahasiswa dengan NIM 1526470 sukses ==";
+    cout << "== Menghapus mahasiswa dengan NIM 1526470 sukses ==" << endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
     deleteMhs(M, "1356203");
     cout << "== Menghapus mahasiswa dengan NIM 1356203 sukses =="<< endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
 
     showMahasiswa(M);
@@ -106,7 +110,8 @@ int main() {
 
     //Pindah Universitas
     pindahUniv(searchMahasiswa(M, "1320666"), searchUniversitas(U, "Telkom University"));
-    cout << "== Pindah Universitas dengan NIM 1230666 sukses! ==";
+    cout << "== Pindah Universitas dengan NIM 1320666 sukses! ==" << endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
     showMahasiswa(M);
 
@@ -123,12 +128,14 @@ int main() {
     mendaftarBeasiswa(searchMahasiswa(M, "2135610"), searchBeasiswa(B, "Beasiswa Pendidikan Indonesia"));
     mendaftarBeasiswa(searchMahasiswa(M, "1653204"), searchBeasiswa(B, "Beasiswa Ikatan Dinas"));
     cout << "== Pendaftaran Beasiswa Sukses! ==" << endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
     showMahasiswa(M);
 
     //Mahasiswa dengan NIM dibawah tidak jadi ikut beasiswa
     keluarBeasiswa(searchMahasiswa(M, "1320666"), searchBeasiswa(B, "Beasiswa Reguler LPDP"));
     cout << "== Mahasiswa Dengan NIM 1320666 Batal mendaftar Beasiswa Reguler LPDP! ==" << endl;
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
     showMahasiswa(M);
 
@@ -143,7 +150,7 @@ int main() {
     terimaBeasiswa(searchMahasiswa(M, "1320548"));
     terimaBeasiswa(searchMahasiswa(M, "2135610"));
     terimaBeasiswa(searchMahasiswa(M, "1653204"));
-    cout << "Tekan ENTER untuk melanjutkan";
+    cout << "Tekan ENTER untuk melanjutkan" << endl;
     cin.ignore();
     cout << endl;
     cout << "================================" << endl;
