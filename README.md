@@ -1,6 +1,5 @@
-# Tubes-STD_Registrasi
- Tugas Besar Struktur Data 2022 Telkom University
- 
+# Registrasi Beasiswa
+
  Kami mengimplementasikan ***Multi Linked List*** dalam sebuah program registrasi beasiswa.
  
  ## Diagram
